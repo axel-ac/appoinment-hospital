@@ -6,12 +6,16 @@ import { useState } from "react";
 
 const Doctors = ({ doctors }) => {
   const [show, setShow] = useState(false);
+  const [selectedDoctor, setSelectedDoctor] = useState("");
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleClick = () => {
-    handleShow();
-  };
 
+  const handleClick = (doctorName) => {
+    handleShow();
+    setSelectedDoctor(doctorName);
+  };
+  console.log(selectedDoctor)
   console.log(doctors);
   return (
     <Container className="p-2">
@@ -26,7 +30,7 @@ const Doctors = ({ doctors }) => {
               src={doctor.img}
               alt={doctor.name}
               className="img-thumbnail doctor-img"
-              onClick={handleClick}
+              onClick={() => handleClick(doctor.name)}
             />
 
             <h5>{doctor.name}</h5>
@@ -34,7 +38,7 @@ const Doctors = ({ doctors }) => {
           </Col>
         ))}
       </Row>
-      <AddModal show={show} handleClose={handleClose} />
+      <AddModal show={show} handleClose={handleClose} drName={selectedDoctor} />
     </Container>
   );
 };
