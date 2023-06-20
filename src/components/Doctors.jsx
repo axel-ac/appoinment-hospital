@@ -1,9 +1,17 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import AddModal from "./AddModal";
+import { AddModal } from "./AddModal";
+import { useState } from "react";
 
 const Doctors = ({ doctors }) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const handleClick = () => {
+    handleShow();
+  };
+
   console.log(doctors);
   return (
     <Container className="p-2">
@@ -13,14 +21,20 @@ const Doctors = ({ doctors }) => {
       </h3>
       <Row className="justify-content-center">
         {doctors.map((doctor, index) => (
-          <Col key={(index)} xs={6} sm={4} md={3}>
-            <img src={doctor.img} alt={doctor.name} className="img-thumbnail doctor-img" />
+          <Col key={index} xs={6} sm={4} md={3}>
+            <img
+              src={doctor.img}
+              alt={doctor.name}
+              className="img-thumbnail doctor-img"
+              onClick={handleClick}
+            />
+
             <h5>{doctor.name}</h5>
             <h6>{doctor.dep}</h6>
           </Col>
         ))}
       </Row>
-      <AddModal/>
+      <AddModal show={show} handleClose={handleClose} />
     </Container>
   );
 };
