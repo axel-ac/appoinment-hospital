@@ -7,7 +7,7 @@ import AppointmentList from "../components/AppointmentList";
 const Home = () => {
   const [doctors, setDoctors] = useState(doctorData)
   const [appointments, setAppointments] = useState(appointmentData);
-  // console.log(doctors)
+  console.log(doctors)
   console.log(appointments);
 
   return (

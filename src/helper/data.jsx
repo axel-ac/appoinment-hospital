@@ -3,7 +3,7 @@ export const appointmentData = [
     id: 1,
     patient: "Barry Vermont",
     day: new Date(),
-    consulted: true,
+    consulted: false,
     doctor: "Dr. Hazel Valery",
   },
   {
@@ -17,7 +17,7 @@ export const appointmentData = [
     id: 3,
     patient: "Aaron Black",
     day: new Date(),
-    consulted: true,
+    consulted: false,
     doctor: "Dr. Jasmine Carpanter",
   },
 ]
